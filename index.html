@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>normal calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Decorative gothic line-art, drawn with pure SVG. -->
+  <!-- Purely decorative, so screen readers can skip it (aria-hidden). -->
+  <svg class="bg-art bg-art-left" aria-hidden="true" viewBox="0 0 200 400">
+    <!-- Coiled dragon, simplified woodcut-style line art -->
+    <path d="M40 380 C20 340, 30 300, 60 290 C40 270, 35 230, 60 210
+             C40 190, 45 150, 80 140 C70 110, 90 80, 120 90
+             C140 60, 170 60, 180 90 C190 70, 175 40, 150 35
+             C130 20, 100 25, 95 45 C70 40, 55 60, 65 80
+             C45 85, 35 105, 50 120 C30 130, 25 155, 45 165" />
+    <circle cx="178" cy="62" r="4" class="dragon-eye" />
+  </svg>
+
+  <svg class="bg-art bg-art-right" aria-hidden="true" viewBox="0 0 200 400">
+    <!-- Reaper silhouette: hood, robe, scythe -->
+    <path d="M100 40 C80 40, 70 60, 72 80 C60 85, 55 100, 60 115
+             C50 130, 45 160, 55 190 L45 340 C45 360, 60 375, 100 375
+             C140 375, 155 360, 155 340 L145 190
+             C155 160, 150 130, 140 115 C145 100, 140 85, 128 80
+             C130 60, 120 40, 100 40 Z" />
+    <path class="scythe" d="M150 60 L170 20 M170 20 C185 15, 195 25, 190 40
+             C180 50, 165 45, 160 35" />
+  </svg>
+
+  <main class="calculator" id="calculator">
+
+    <!-- Title plate, like an engraved nameplate -->
+    <div class="nameplate">Aarab</div>
+
+    <!-- History dropdown: click to expand/collapse past calculations -->
+    <div class="history">
+      <button class="history-toggle" id="history-toggle" aria-expanded="false">
+        <span>History</span>
+        <span class="chevron" id="history-chevron">▾</span>
+      </button>
+      <ul class="history-list" id="history-list">
+        <li class="history-empty">No calculations yet</li>
+      </ul>
+    </div>
+
+    <!-- The screen. Shows what you're typing and the result. -->
+    <div class="display">
+      <div class="previous-operand" id="previous-operand"></div>
+      <div class="current-operand" id="current-operand">0</div>
+      <!-- This sits invisibly on top of the screen until AC is pressed,
+           then it sweeps across like dragon fire before the reset. -->
+      <div class="flame-overlay" id="flame-overlay"></div>
+    </div>
+
+    <!-- All the buttons. Each one has a "data-" attribute -->
+    <!-- that JavaScript reads to know what the button does. -->
+    <div class="buttons">
+      <button class="btn clear" data-action="clear">AC</button>
+      <button class="btn delete" data-action="delete">DEL</button>
+      <button class="btn operator" data-action="operator" data-value="/">÷</button>
+      <button class="btn operator" data-action="operator" data-value="*">×</button>
+
+      <button class="btn number" data-action="number" data-value="7">7</button>
+      <button class="btn number" data-action="number" data-value="8">8</button>
+      <button class="btn number" data-action="number" data-value="9">9</button>
+      <button class="btn operator" data-action="operator" data-value="-">−</button>
+
+      <button class="btn number" data-action="number" data-value="4">4</button>
+      <button class="btn number" data-action="number" data-value="5">5</button>
+      <button class="btn number" data-action="number" data-value="6">6</button>
+      <button class="btn operator" data-action="operator" data-value="+">+</button>
+
+      <button class="btn number" data-action="number" data-value="1">1</button>
+      <button class="btn number" data-action="number" data-value="2">2</button>
+      <button class="btn number" data-action="number" data-value="3">3</button>
+      <button class="btn equals" data-action="equals">=</button>
+
+      <button class="btn number zero" data-action="number" data-value="0">0</button>
+      <button class="btn number" data-action="decimal" data-value=".">.</button>
+    </div>
+
+    <!-- Fullscreen toggle -->
+    <button class="fullscreen-btn" id="fullscreen-btn" title="Toggle fullscreen">⛶ Fullscreen</button>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
